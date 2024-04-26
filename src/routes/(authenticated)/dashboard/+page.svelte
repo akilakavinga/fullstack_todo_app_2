@@ -5,8 +5,7 @@
   import CheckIcon from "$lib/components/CheckIcon.svelte";
   import TrashIcon from "$lib/components/TrashIcon.svelte";
   import type { Todo, TodoCreate } from "$lib/typing.js";
-  import type { ActionResult, SubmitFunction } from "@sveltejs/kit";
-  import { derived } from "svelte/store";
+  import type { SubmitFunction } from "@sveltejs/kit";
 
   /* ----------------------------- Init Todo Store ---------------------------- */
   export let data;
@@ -20,14 +19,14 @@
   let filteredTodos = $todoStore;
 
   /* ------------------------------ Filter Effect ----------------------------- */
+  const active = (todo: TodoCreate) => !todo.is_complete;
+  const completed = (todo: TodoCreate) => todo.is_complete;
+
   $: {
-    if (filter === "all") {
-      filteredTodos = $todoStore;
-    } else if (filter === "active") {
-      filteredTodos = $todoStore.filter((_todo) => !_todo.is_complete);
-    } else if (filter === "complete") {
-      filteredTodos = $todoStore.filter((_todo) => _todo.is_complete);
-    }
+    filteredTodos =
+      filter === "all"
+        ? $todoStore
+        : $todoStore.filter(filter === "active" ? active : completed);
   }
 
   /* ---------------------------- Submit Functions ---------------------------- */

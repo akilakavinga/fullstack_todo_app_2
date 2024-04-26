@@ -1,3 +1,4 @@
+import type { Theme } from "$lib/typing";
 import { redirect, type Actions } from "@sveltejs/kit";
 
 export const actions: Actions = {

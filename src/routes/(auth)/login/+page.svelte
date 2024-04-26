@@ -2,10 +2,7 @@
   import SuperDebug, { superForm } from "sveltekit-superforms";
   export let data;
 
-  const { form, errors, posted, enhance, submitting } = superForm(data.form, {
-    delayMs: 300,
-    timeoutMs: 8000,
-  });
+  const { form, errors, posted, enhance, submitting } = superForm(data.form);
 </script>
 
 <form method="POST" class="login" use:enhance>

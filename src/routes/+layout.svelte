@@ -4,8 +4,11 @@
   import Navbar from "$lib/components/Navbar.svelte";
   import PageLoaderBar from "$lib/components/PageLoaderBar.svelte";
   import { isJSStore } from "$lib";
+  import { page } from "$app/stores";
 
   export let data;
+
+  $: console.log($page.url);
 
   onMount(() => {
     $isJSStore = true;
