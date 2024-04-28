@@ -24,7 +24,6 @@ export const actions: Actions = {
       .single();
 
     if (!email_data) {
-      message(form, { status: "error" });
       return setError(form, "email", "Email does not exist");
     }
 

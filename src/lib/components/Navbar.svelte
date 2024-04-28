@@ -1,4 +1,5 @@
 <script lang="ts">
+  import Avatar from "./Avatar.svelte";
   import ThemeToggle from "./ThemeToggle.svelte";
 
   export let isLoggedIn: Boolean;
@@ -7,6 +8,7 @@
 <nav>
   <ul>
     <li><a href="/dashboard">Dashboard</a></li>
+    <li><a href="/profile">Profile</a></li>
   </ul>
   <ul>
     <li>
@@ -26,6 +28,11 @@
         <form action="/?/sign_out" method="post">
           <button class="secondary">Sign Out</button>
         </form>
+      </li>
+    {/if}
+    {#if isLoggedIn}
+      <li>
+        <Avatar />
       </li>
     {/if}
     <li>

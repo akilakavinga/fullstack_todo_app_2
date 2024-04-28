@@ -3,14 +3,19 @@
   import { onMount } from "svelte";
   import Navbar from "$lib/components/Navbar.svelte";
   import PageLoaderBar from "$lib/components/PageLoaderBar.svelte";
-  import { isJSStore } from "$lib";
-  import { page } from "$app/stores";
+  import { isJSStore, userAvatarStore } from "$lib";
+  import { downloadAvatar } from "$lib/utils.js";
 
   export let data;
+  $: if (data.user) {
+    downloadAvatar(data.user?.user_metadata.avatar_url, data.supabase).then(
+      (res) => {
+        $userAvatarStore = res;
+      }
+    );
+  }
 
-  $: console.log($page.url);
-
-  onMount(() => {
+  onMount(async () => {
     $isJSStore = true;
   });
 </script>
