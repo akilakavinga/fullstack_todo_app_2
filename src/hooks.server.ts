@@ -9,6 +9,7 @@ import type { Handle } from "@sveltejs/kit";
 
 export const handle: Handle = async ({ resolve, event }) => {
   /* ---------------------------- Dark Mode Toggle ---------------------------- */
+  console.log("hello");
 
   const theme = event.cookies.get("theme") as Theme;
   let finalThemeDataAttribute: string = "";

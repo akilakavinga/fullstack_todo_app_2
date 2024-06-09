@@ -14,7 +14,7 @@ export const load = (async ({ locals: { supabase, safeGetSession } }) => {
   const { data: profile } = await supabase
     .from("profiles")
     .select()
-    .eq("id", user.id)
+    .eq("id", user?.id)
     .single();
 
   if (!profile) {

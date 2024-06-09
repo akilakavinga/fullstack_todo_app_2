@@ -12,7 +12,7 @@
   todoStore.set(data.todos!);
 
   /* -------------------------------- Variables ------------------------------- */
-  const { id: user_id } = data.user;
+  const { id: user_id } = data?.user;
   let new_task: string;
   let filter: "all" | "complete" | "active" = "all";
   let focusedTodo: string | undefined = undefined;
